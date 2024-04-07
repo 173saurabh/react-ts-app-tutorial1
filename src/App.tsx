@@ -1,7 +1,7 @@
 //import Message from './Message';
 //import ListGroup from "./components/ListGroup";
-//import Alert from "./components/Alert";
-import { ReactNode, FC } from "react";
+import { useState } from "react";
+import Alert from "./components/Alert";
 import Button from "./components/Button";
 
 //For ListGroup Component
@@ -36,9 +36,13 @@ import Button from "./components/Button";
 
 //For button component
 function App() {
+  const [alertVisible, setAlertVisibility] = useState(false);
   return (
     <div>
-      <Button colour="secondary" onClick={() => console.log("Clicked")}>
+      {alertVisible && (
+        <Alert onClose={() => setAlertVisibility(false)}>My Alert</Alert>
+      )}
+      <Button colour="secondary" onClick={() => setAlertVisibility(true)}>
         Submit
       </Button>
     </div>
